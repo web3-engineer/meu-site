@@ -1,0 +1,512 @@
+/* ==========================================
+   ESTILO VISUAL INSPIRADO NO LUXO AUSTERO (BUGATTI)
+   ========================================== */
+
+:root {
+  --z-fundo: #000000;
+  --z-superficie: #0d0d0d;
+  --z-superficie-card: #141414;
+  --z-texto: #ffffff;
+  --z-texto-suave: #cccccc;
+  --z-primaria: #ffffff;
+  --z-acento: #c3d9f3; /* Ice Blue desaturado para links e detalhes sutis */
+  --z-borda: #262626;
+  
+  /* Fontes substitutas perfeitas */
+  --z-fonte-titulo: 'Saira Condensed', sans-serif;
+  --z-fonte-corpo: 'Cormorant Garamond', serif;
+  --z-fonte-mono: 'JetBrains Mono', monospace;
+  
+  --z-raio: 0px; /* Cantos retos industriais para tudo */
+  --z-raio-botao: 9999px; /* Apenas botões são pílulas */
+  --z-espaco: 16px;
+}
+
+/* ---------- Reset & Base ---------- */
+body.z-pg {
+  background-color: var(--z-fundo) !important;
+  color: var(--z-texto) !important;
+  font-family: var(--z-fonte-corpo) !important;
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Remover qualquer gradiente ou textura diagonal padrão */
+.z-ph, .z-ph::before, .z-ph::after {
+  background: var(--z-superficie) !important;
+}
+
+.z-veu {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ---------- Top Nav (Estilo Bugatti) ---------- */
+.m-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--z-borda);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.m-nav-container {
+  width: min(100% - 2 * 24px, 1280px);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.m-nav-link {
+  font-family: var(--z-fonte-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--z-texto-suave);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.m-nav-link:hover {
+  color: var(--z-texto);
+}
+
+.m-nav-wordmark {
+  font-family: var(--z-fonte-titulo);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  color: var(--z-texto);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* ---------- Hero Section ---------- */
+.z-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 64px;
+  overflow: hidden;
+}
+
+.z-fundo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.m-hero-img {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42%;
+  max-width: 520px;
+  height: auto;
+  opacity: 0.95;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .z-hero {
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 100px 60px;
+  }
+  .z-fundo {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 32px;
+  }
+  .m-hero-img {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 80%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.z-hero-grade {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  width: 100%;
+  z-index: 2;
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .z-hero-grade {
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+  }
+  /* Empurra o conteúdo de texto para a segunda coluna (lado direito) */
+  .z-hero-grade > div:first-child {
+    grid-column: 2;
+  }
+  .z-hero-grade > .z-hero-acao {
+    grid-column: 2;
+  }
+}
+
+.z-hero-titulo {
+  font-family: var(--z-fonte-titulo) !important;
+  font-size: clamp(3rem, 6vw, 5.5rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.05 !important;
+  letter-spacing: 4px !important;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.z-hero-sub {
+  font-family: var(--z-fonte-mono) !important;
+  font-size: clamp(13px, 1.5vw, 16px) !important;
+  letter-spacing: 2px !important;
+  color: var(--z-acento) !important;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.z-lead {
+  font-family: var(--z-fonte-corpo) !important;
+  font-size: clamp(18px, 2vw, 21px) !important;
+  font-weight: 300 !important;
+  color: var(--z-texto-suave) !important;
+  line-height: 1.6 !important;
+}
+
+/* ---------- Eyebrow ---------- */
+.m-eyebrow {
+  font-family: var(--z-fonte-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: var(--z-acento);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* ---------- Botões (Pílula Transparente) ---------- */
+.z-btn {
+  font-family: var(--z-fonte-mono) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  letter-spacing: 2.5px !important;
+  text-transform: uppercase !important;
+  background-color: transparent !important;
+  color: var(--z-texto) !important;
+  border: 1px solid var(--z-texto) !important;
+  border-radius: var(--z-raio-botao) !important;
+  padding: 14px 36px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+.z-btn:hover {
+  background-color: var(--z-texto) !important;
+  color: var(--z-fundo) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ---------- Seções Gerais ---------- */
+.z-sec {
+  padding-block: 120px !important; /* Espaçamento generoso do estilo Bugatti */
+  border-bottom: 1px solid var(--z-borda);
+}
+
+.z-alt {
+  background-color: var(--z-superficie) !important;
+}
+
+.z-titulo {
+  font-family: var(--z-fonte-titulo) !important;
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase;
+  line-height: 1.15 !important;
+}
+
+.z-cab {
+  margin-bottom: 64px !important;
+}
+
+/* ---------- Cards de Notas Olfativas ---------- */
+.m-cartao {
+  background-color: var(--z-superficie-card);
+  border: 1px solid var(--z-borda);
+  border-radius: var(--z-raio);
+  padding: 48px 36px;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.m-cartao:hover {
+  border-color: var(--z-texto);
+  background-color: #141111; /* Toque sutil de calor */
+}
+
+.m-card-icon {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.m-item-titulo {
+  font-family: var(--z-fonte-titulo);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: var(--z-texto);
+}
+
+.m-item-desc {
+  font-family: var(--z-fonte-corpo);
+  font-size: 16px;
+  color: var(--z-texto-suave);
+  line-height: 1.6;
+}
+
+/* ---------- Split Grid (Sobre / Destilação) ---------- */
+.m-split-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .m-split-grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.m-split-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.m-moldura {
+  border: 1px solid var(--z-borda);
+  border-radius: var(--z-raio);
+  overflow: hidden;
+  background-color: var(--z-superficie-card);
+}
+
+.m-moldura img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Spec Grid (Especificações Técnicas) ---------- */
+.m-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+  border-top: 1px solid var(--z-borda);
+  padding-top: 32px;
+}
+
+.m-spec-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.m-spec-value {
+  font-family: var(--z-fonte-titulo);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--z-texto);
+}
+
+.m-spec-label {
+  font-family: var(--z-fonte-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--z-texto-suave);
+  text-transform: uppercase;
+}
+
+/* ---------- Depoimentos ---------- */
+.m-depoimento-card {
+  background-color: var(--z-superficie-card);
+  border: 1px solid var(--z-borda);
+  border-radius: var(--z-raio);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  margin: 0;
+}
+
+.m-depoimento-texto {
+  font-family: var(--z-fonte-corpo);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--z-texto-suave);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.m-depoimento-autor strong {
+  font-family: var(--z-fonte-titulo);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--z-texto);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.m-depoimento-autor span {
+  font-family: var(--z-fonte-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--z-acento);
+  text-transform: uppercase;
+  display: block;
+}
+
+/* ---------- CTA Box ---------- */
+.m-cta-box {
+  text-align: center;
+  border: 1px solid var(--z-borda);
+  border-radius: var(--z-raio);
+  padding: 64px 40px;
+  background-color: var(--z-superficie-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.m-cta-desc {
+  font-family: var(--z-fonte-corpo);
+  font-size: 18px;
+  color: var(--z-texto-suave);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ---------- Footer ---------- */
+.m-footer {
+  background-color: var(--z-fundo);
+  border-top: 1px solid var(--z-borda);
+  padding-block: 80px 40px;
+}
+
+.m-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+  .m-footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+.m-footer-logo {
+  font-family: var(--z-fonte-titulo);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  color: var(--z-texto);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.m-footer-desc {
+  font-family: var(--z-fonte-corpo);
+  font-size: 16px;
+  color: var(--z-texto-suave);
+  max-width: 320px;
+}
+
+.m-footer h4 {
+  font-family: var(--z-fonte-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--z-texto);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.m-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.m-footer ul a {
+  font-family: var(--z-fonte-corpo);
+  font-size: 16px;
+  color: var(--z-texto-suave);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.m-footer ul a:hover {
+  color: var(--z-texto);
+}
+
+.m-footer-bottom {
+  border-top: 1px solid var(--z-borda);
+  padding-top: 32px;
+  text-align: center;
+}
+
+.m-footer-bottom p {
+  font-family: var(--z-fonte-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #666666;
+  margin: 0;
+}
+
+/* ---------- Scroll Indicator Animation ---------- */
+.z-rolar {
+  border-color: var(--z-borda) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.z-rolar svg {
+  color: var(--z-texto) !important;
+}
